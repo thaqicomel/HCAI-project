@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 # Page configuration
 st.set_page_config(
-    page_title="HR Dashboard",
+    page_title="Hiring Dashboard",
     page_icon="📊",
     layout="wide"
 )
