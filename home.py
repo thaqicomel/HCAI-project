@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 # Page configuration
 st.set_page_config(
-    page_title="HR AI Platform",
+    page_title="Hiring Platform",
     page_icon="🏢",
     layout="wide",
     initial_sidebar_state="collapsed"
