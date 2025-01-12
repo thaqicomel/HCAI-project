@@ -135,7 +135,7 @@ with col1:
         </div>
     """, unsafe_allow_html=True)
     if st.button("View AI Insights", key="ai_btn"):
-        st.switch_page("pages/2_🤖_ai_explanation.py")
+        st.switch_page("pages/3_🤖_ai_explanation.py")
 
 with col2:
     st.markdown("""
@@ -150,7 +150,7 @@ with col2:
         </div>
     """, unsafe_allow_html=True)
     if st.button("Browse Candidates", key="cand_btn"):
-        st.switch_page("pages/3_👤_candidate_profile.py")
+        st.switch_page("pages/2_👤_candidate_profile.py")
 
     st.markdown("""
         <div class="card">
