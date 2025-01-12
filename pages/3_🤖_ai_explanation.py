@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from datetime import datetime, timedelta
+from datetime import datetime
 
 # Page configuration
 st.set_page_config(
@@ -28,6 +28,18 @@ st.markdown("""
         padding: 0.5rem;
         border-radius: 0.25rem;
     }
+    .bias-alert-high {
+        color: #dc3545;  /* Red for high risk */
+        font-weight: bold;
+    }
+    .bias-alert-medium {
+        color: #ffc107;  /* Yellow for medium risk */
+        font-weight: bold;
+    }
+    .bias-alert-low {
+        color: #28a745;  /* Green for low risk */
+        font-weight: bold;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -39,6 +51,7 @@ def get_ai_explanation_data():
             'Technical Skills': {
                 'weight': 0.35,
                 'score': 92,
+                'confidence_interval': (90, 94),
                 'explanation': 'Strong proficiency in required technical skills',
                 'confidence': 0.95,
                 'key_points': [
@@ -50,6 +63,7 @@ def get_ai_explanation_data():
             'Experience': {
                 'weight': 0.30,
                 'score': 88,
+                'confidence_interval': (85, 91),
                 'explanation': 'Relevant experience in similar roles',
                 'confidence': 0.90,
                 'key_points': [
@@ -61,6 +75,7 @@ def get_ai_explanation_data():
             'Education': {
                 'weight': 0.20,
                 'score': 95,
+                'confidence_interval': (93, 97),
                 'explanation': 'Advanced degree in relevant field',
                 'confidence': 0.98,
                 'key_points': [
@@ -72,6 +87,7 @@ def get_ai_explanation_data():
             'Cultural Fit': {
                 'weight': 0.15,
                 'score': 90,
+                'confidence_interval': (87, 93),
                 'explanation': 'Strong alignment with company values',
                 'confidence': 0.85,
                 'key_points': [
@@ -135,6 +151,10 @@ explanation_data = get_ai_explanation_data()
 st.title("🤖 AI Decision Explanation Panel")
 st.markdown("Understanding how the AI evaluates candidates")
 
+# Summary of AI Decision
+st.subheader("Summary of AI Decision")
+st.write(f"The candidate was ranked highly due to their strong technical skills ({explanation_data['decision_factors']['Technical Skills']['score']}/100) and relevant experience ({explanation_data['decision_factors']['Experience']['score']}/100). Their advanced education ({explanation_data['decision_factors']['Education']['score']}/100) and cultural fit ({explanation_data['decision_factors']['Cultural Fit']['score']}/100) also contributed positively.")
+
 # Decision Factors Analysis
 st.header("Decision Factors Analysis")
 
@@ -153,9 +173,9 @@ with col1:
     fig = px.bar(
         factors_df,
         x='Factor',
-        y=['Weight', 'Score'],
+        y=[ 'Score'],
         barmode='group',
-        title='Decision Factors: Weights vs Scores'
+        title='Decision Factors: Scores'
     )
     st.plotly_chart(fig, use_container_width=True)
 
@@ -174,6 +194,7 @@ for factor, details in explanation_data['decision_factors'].items():
     with st.expander(f"{factor} (Score: {details['score']}, Confidence: {details['confidence']*100:.1f}%)", expanded=True):
         st.write(f"**Weight:** {details['weight']}")
         st.write(f"**Explanation:** {details['explanation']}")
+        st.write(f"**Confidence Interval:** {details['confidence_interval'][0]} - {details['confidence_interval'][1]}")
         st.write("**Key Points:**")
         for point in details['key_points']:
             st.write(f"- {point}")
@@ -188,11 +209,21 @@ bias_df = pd.DataFrame({
     'Confidence': [b['confidence'] for b in explanation_data['bias_analysis'].values()]
 })
 
-fig = go.Figure(data=[
-    go.Bar(name='Confidence', x=bias_df['Type'], y=bias_df['Confidence']),
-])
-fig.update_layout(title='Bias Analysis Confidence Levels')
-st.plotly_chart(fig, use_container_width=True)
+# Color-coded alerts for biases
+st.subheader("Bias Risk Levels")
+for bias_type, bias_details in explanation_data['bias_analysis'].items():
+    risk_level = bias_details['risk']
+    if risk_level == 'High':
+        st.error(f"⚠️ {bias_type.capitalize()} Bias: {risk_level} Risk (Confidence: {bias_details['confidence']*100:.1f}%)")
+    elif risk_level == 'Medium':
+        st.warning(f"⚠️ {bias_type.capitalize()} Bias: {risk_level} Risk (Confidence: {bias_details['confidence']*100:.1f}%)")
+    else:
+        st.success(f"✅ {bias_type.capitalize()} Bias: {risk_level} Risk (Confidence: {bias_details['confidence']*100:.1f}%)")
+
+# Mitigation recommendations
+st.subheader("Bias Mitigation Recommendations")
+if explanation_data['bias_analysis']['education_bias']['risk'] == 'Medium':
+    st.write("**Education Bias:** Consider focusing on skills and experience rather than academic qualifications. Use blind recruitment techniques to anonymize educational backgrounds.")
 
 # Evaluation Process Visualization
 st.header("Evaluation Process")
@@ -223,6 +254,12 @@ fig = px.bar(
     title="Feature Importance in AI Decision Making"
 )
 st.plotly_chart(fig, use_container_width=True)
+
+# Feedback Mechanism
+st.header("Feedback")
+feedback = st.radio("Was this explanation helpful?", ["Yes", "No", "Not Sure"])
+if feedback == "No" or feedback == "Not Sure":
+    st.text_area("Please provide additional feedback:")
 
 # Export section
 st.divider()
