@@ -2,7 +2,7 @@ import streamlit as st
 
 # Page configuration
 st.set_page_config(
-    page_title="HR AI Platform",
+    page_title="Hiring AI Platform",
     page_icon="🏢",
     layout="wide"
 )
@@ -39,7 +39,7 @@ st.markdown("### AI-Powered Recruitment and Candidate Evaluation System")
 
 # Introduction
 st.markdown("""
-Welcome to the HR AI Platform, your comprehensive solution for:
+Welcome to the Hiring AI Platform, your comprehensive solution for:
 - 📊 Intelligent candidate evaluation
 - 🤖 Bias-free recruitment
 - 📈 Data-driven hiring decisions
@@ -65,23 +65,23 @@ with col1:
     with st.container():
         st.markdown("""
         <div class="card">
-            <h4>👤 Candidate Profiles</h4>
-            <p>Detailed candidate information and assessments.</p>
-        </div>
-        """, unsafe_allow_html=True)
-        if st.button("View Candidates", key="cand_btn", use_container_width=True):
-            st.switch_page("pages/candidate_profile.py")
-
-with col2:
-    with st.container():
-        st.markdown("""
-        <div class="card">
             <h4>🤖 AI Explanations</h4>
             <p>Understand how the AI evaluates candidates.</p>
         </div>
         """, unsafe_allow_html=True)
         if st.button("AI Insights", key="ai_btn", use_container_width=True):
             st.switch_page("pages/ai_explanation.py")
+            
+with col2:
+    with st.container():
+        st.markdown("""
+        <div class="card">
+            <h4>👤 Candidate Profiles</h4>
+            <p>Detailed candidate information and assessments.</p>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("View Candidates", key="cand_btn", use_container_width=True):
+            st.switch_page("pages/candidate_profile.py")
     
     with st.container():
         st.markdown("""
@@ -93,7 +93,7 @@ with col2:
         if st.button("Oversight Panel", key="oversight_btn", use_container_width=True):
             st.switch_page("pages/human_oversight.py")
 
-# System statsdgegge
+# System stats
 st.divider()
 st.subheader("System Statistics")
 
@@ -125,7 +125,7 @@ for activity in recent_activities:
 
 # Footer
 st.divider()
-st.caption("HR AI Platform v2.0 - Powered by Tharazeenuddin")
+st.caption("Hiring AI Platform v2.0 - Powered by Tharazeenuddin")
 
 # Optional: Add a help section in the sidebar
 with st.sidebar:
