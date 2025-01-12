@@ -125,8 +125,8 @@ with col1:
 
     st.markdown("""
         <div class="card">
-            <h4>🤖 AI Explanation</h4>
-            <p>Transparent insights into AI decision-making</p>
+            <h4>🤖 Bias Report and AI Explanation</h4>
+            <p>Bias Report Analysis and Transparent insights into AI decision-making</p>
             <ul>
                 <li>Decision factors</li>
                 <li>Bias detection</li>
@@ -134,8 +134,8 @@ with col1:
             </ul>
         </div>
     """, unsafe_allow_html=True)
-    if st.button("View AI Insights", key="ai_btn"):
-        st.switch_page("pages/3_🤖_bias_report_ai_explanation.py")
+    if st.button("View Insights", key="ai_btn"):
+        st.switch_page("pages/3_🤖_bias_report_and_ai_explanation.py")
 
 with col2:
     st.markdown("""
