@@ -93,7 +93,7 @@ with col2:
         if st.button("Oversight Panel", key="oversight_btn", use_container_width=True):
             st.switch_page("pages/human_oversight.py")
 
-# System stats
+# System statsdgegge
 st.divider()
 st.subheader("System Statistics")
 
