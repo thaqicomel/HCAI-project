@@ -147,7 +147,7 @@ def get_ai_explanation_data():
 explanation_data = get_ai_explanation_data()
 
 # Header
-st.title("🤖 AI Decision Explanation Panel")
+st.title("🤖 Bias Report and AI Decision Explanation Panel")
 st.markdown("Understanding how the AI evaluates candidates")
 
 # Summary of AI Decision
