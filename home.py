@@ -63,7 +63,7 @@ st.markdown("""
 # Welcome Header
 st.markdown("""
     <div class="welcome-header">
-        <h1>🏢 HR AI Platform</h1>
+        <h1>🏢 Hiring Platform</h1>
         <p style='font-size: 1.2rem;'>Welcome to the next generation of AI-powered recruitment and candidate evaluation</p>
     </div>
 """, unsafe_allow_html=True)
