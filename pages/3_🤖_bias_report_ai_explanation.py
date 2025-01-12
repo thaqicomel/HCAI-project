@@ -3,10 +3,9 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
-
 # Page configuration
 st.set_page_config(
-    page_title="AI Explanation Panel",
+    page_title="Bias Report and AI Explanation Panel",
     page_icon="🤖",
     layout="wide"
 )
@@ -287,4 +286,4 @@ with col2:
 
 # Footer
 st.markdown("---")
-st.caption("AI Explanation System v2.0 - Powered by Advanced Machine Learning")
+st.caption("Bias Report and AI Explanation System v2.0 - Powered by Advanced Machine Learning")
