@@ -232,5 +232,5 @@ with st.sidebar:
 
 # Footer
 st.markdown("---")
-st.caption("HR AI Platform v2.0 - Powered by Tharazeenuddin")
-st.caption("© 2024 HR AI Platform. All rights reserved.")
+st.caption("Hiring Platform v2.0 - Powered by Tharazeenuddin")
+st.caption("© 2025 Hiring Platform. All rights reserved.")
