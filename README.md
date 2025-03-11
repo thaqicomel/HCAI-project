@@ -6,7 +6,7 @@ This project focuses on designing and prototyping a **Human-Centered AI Hiring P
 The project includes:
 1. **AI Explanation Panel:** Provides transparent explanations of AI decisions.
 2. **Bias Report:** Detects and mitigates biases in candidate evaluations.
-3. **High-Fidelity Prototype:** A non-functional design of the hiring platform, created using tools like **Figma** and **Streamlit**.
+3. **High-Fidelity Prototype:** A non-functional design of the hiring platform, created using tools like **Streamlit**.
 
 ---
 
@@ -22,7 +22,7 @@ A comprehensive document that outlines the entire project, including:
 - **Conclusion:** Summary of findings, implications, and recommendations.
 
 ### 2. **High-Fidelity Prototype**
-A **non-functional prototype** of the hiring platform, designed using **Figma** and **Streamlit**. The prototype includes:
+A **non-functional prototype** of the hiring platform, designed using **Streamlit**. The prototype includes:
 - **Bias Detection and Mitigation:** Features to detect and reduce bias in candidate evaluations.
 - **Explainable AI (XAI):** Techniques to make AI decisions transparent and understandable.
 - **User Interface (UI):** A user-friendly interface for hiring managers to interact with the system.
